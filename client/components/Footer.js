@@ -1,10 +1,5 @@
-import React from 'react'
-import { images } from 'Utilities/common'
+import * as React from 'react'
 
-const Footer = () => (
-  <div className="footer">
-    <img src={images.toskaLogo} alt="toska" />
-  </div>
-)
+const Footer = () => <footer className='footer'>With ♥ to Rynxe</footer>
 
 export default Footer

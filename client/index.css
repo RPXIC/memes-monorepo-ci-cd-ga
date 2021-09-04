@@ -1,0 +1,20 @@
+.listContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  min-height: 87vh;
+}
+
+.title {
+  text-align: center;
+}
+
+.meme {
+  width: 20rem;
+  margin: .5rem;
+  border: 1px solid #ccc;
+}
+
+footer {
+  text-align: center;
+}

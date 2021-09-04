@@ -36,22 +36,9 @@ module.exports = (env, argv) => {
             loader: 'babel-loader',
           },
         },
-        { // Load SCSS & SASS files
-          test: /\.s[ac]ss$/i,
-          use: [
-            // Creates `style` nodes from JS strings
-            'style-loader',
-            // Translates CSS into CommonJS
-            'css-loader',
-            // Compiles Sass to CSS
-            {
-              loader: 'sass-loader',
-              options: {
-                // Prefer `dart-sass`
-                implementation: sass,
-              },
-            },
-          ],
+        {
+          test: /\.css$/,
+          use: ['style-loader', 'css-loader'],
         },
         {
           // Load other files
@@ -68,7 +55,7 @@ module.exports = (env, argv) => {
       // Skip the part where we would make a html template
       new HtmlWebpackPlugin({
         template: 'index.html',
-        favicon: path.resolve(__dirname, 'client/assets/favicon-32x32.png'),
+        favicon: path.resolve(__dirname, 'client/assets/favicon.ico'),
       }),
       ...additionalPlugins,
     ],

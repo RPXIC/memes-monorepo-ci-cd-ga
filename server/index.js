@@ -1,13 +1,13 @@
 const express = require('express')
-const routes = require('@util/routes')
-const errorMiddleware = require('@middleware/errorMiddleware')
+var cors = require('cors')
+const routes = require('./routes')
 
 const app = express()
 
-app.use(express.json())
+app.use(cors())
+
+app.use(express.static('public'))
 
 app.use(routes)
-
-app.use(errorMiddleware)
 
 module.exports = app
