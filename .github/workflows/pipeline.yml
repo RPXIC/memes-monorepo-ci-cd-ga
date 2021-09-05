@@ -90,29 +90,30 @@ jobs:
           path: dist
       - name: Test
         run: npm run test
-  # e2e:
-  #   needs: [lint, build]
-  #   runs-on: ubuntu-18.04
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #       with:
-  #         fetch-depth: 0
-  #     - uses: actions/setup-node@v2
-  #       with:
-  #         cache: "npm"
-  #         node-version: "14"
-  #     - name: Install Dependencies
-  #       run: npm ci
-  #     - uses: actions/download-artifact@v2
-  #       with:
-  #         name: dist
-  #         path: dist
-  #     - name: E2E Test
-  #       uses: cypress-io/github-action@v2
-  #       with:
-  #         command: npm run test:e2e
-  #         start: npm run start-test
-  #         wait-on: http://localhost:5000
+
+  e2e:
+    needs: [lint, build]
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v2
+        with:
+          cache: "npm"
+          node-version: "14"
+      - name: Install Dependencies
+        run: npm ci
+      - uses: actions/download-artifact@v2
+        with:
+          name: dist
+          path: dist
+      - name: E2E Test
+        uses: cypress-io/github-action@v2
+        with:
+          command: npm run test:e2e
+          start: npm run start-test
+          wait-on: http://localhost:8000
   # deployment_pipeline:
   #   needs: [test, e2e]
   #   runs-on: ubuntu-18.04
