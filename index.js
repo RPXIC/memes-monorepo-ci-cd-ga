@@ -9,31 +9,22 @@ const { PORT, inProduction } = require('@util/common')
 
 const app = express()
 
-// Require is here so we can delete it from cache when files change (*)
-app.use('/api', (req, res, next) => require('@root/server')(req, res, next)) // eslint-disable-line
+app.use('/api', (req, res, next) => require('@root/server')(req, res, next))
 
-/**
- *  Use "hot loading" in backend
- */
-const watcher = chokidar.watch('server') // Watch server folder
+const watcher = chokidar.watch('server')
 watcher.on('ready', () => {
   watcher.on('all', () => {
     Object.keys(require.cache).forEach((id) => {
-      if (id.includes('server')) delete require.cache[id] // Delete all require caches that point to server folder (*)
+      if (id.includes('server')) delete require.cache[id]
     })
   })
 })
 
-/**
- * For frontend use hot loading when in development, else serve the static content
- */
 if (!inProduction) {
-  /* eslint-disable */
   const webpack = require('webpack')
   const middleware = require('webpack-dev-middleware')
   const hotMiddleWare = require('webpack-hot-middleware')
   const webpackConf = require('@root/webpack.config')
-  /* eslint-enable */
   const compiler = webpack(webpackConf('development', { mode: 'development' }))
 
   const devMiddleware = middleware(compiler)
