@@ -108,3 +108,5 @@ cypress/fixtures
 cypress/plugins
 cypress/screenshots
 cypress/support
+
+.DS_Store
