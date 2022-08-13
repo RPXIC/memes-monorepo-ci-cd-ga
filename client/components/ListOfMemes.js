@@ -1,4 +1,3 @@
-import * as React from 'react'
 import useImages from '../hooks/useImages'
 import Meme from './Meme'
 
@@ -7,11 +6,7 @@ const ListOfMemes = () => {
 
   return (
     <div className='listContainer'>
-      {images.length > 0 && !isLoading
-        ?
-        images.map((image, i) => <Meme image={image} key={i} />)
-        :
-        <p>{error ? error : 'loading...'}</p>}
+      {images.length > 0 && !isLoading ? images.map((image, i) => <Meme image={image} key={i} />) : <p>{error ? error : 'loading...'}</p>}
     </div>
   )
 }
