@@ -9,13 +9,13 @@ const { PORT, inProduction } = require('@util/common')
 
 const app = express()
 
-app.use('/api', (req, res, next) => require('@root/server')(req, res, next))
+app.use('/api', (req, res, next) => require('@root/api')(req, res, next))
 
-const watcher = chokidar.watch('server')
+const watcher = chokidar.watch('api')
 watcher.on('ready', () => {
   watcher.on('all', () => {
     Object.keys(require.cache).forEach((id) => {
-      if (id.includes('server')) delete require.cache[id]
+      if (id.includes('api')) delete require.cache[id]
     })
   })
 })
