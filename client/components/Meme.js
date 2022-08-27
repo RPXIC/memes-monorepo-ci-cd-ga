@@ -1,3 +1,5 @@
-const Meme = ({ image }) => <img data-cy='meme' className='meme' alt={`image${image}`} src={`http://localhost:8000/api/images/${image}`} />
+const Meme = ({ image }) => {
+  return <img data-cy='meme' className='meme' alt={`image${image}`} src={`${window.location.href}api/images/${image}`} />
+}
 
 export default Meme

@@ -13,7 +13,7 @@
     "test:e2e": "npx cypress run"
   },
   "engines": {
-    "node": ">=10.15"
+    "node": ">=16.0.0"
   },
   "license": "ISC",
   "dependencies": {
@@ -59,14 +59,14 @@
     "ignore": [
       "dist/*",
       "client/*",
-      "server/*"
+      "api/*"
     ]
   },
   "_moduleAliases": {
     "@root": ".",
-    "@controllers": "server/controllers",
-    "@middleware": "server/middleware",
-    "@util": "server/util"
+    "@controllers": "api/controllers",
+    "@middleware": "api/middleware",
+    "@util": "api/util"
   },
   "jest": {
     "testEnvironment": "jest-environment-jsdom"
